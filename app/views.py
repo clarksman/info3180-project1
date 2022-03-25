@@ -5,8 +5,14 @@ Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file creates your application.
 """
 
-from app import app
+import os
+from app import app,db
+from flask import render_template, request, redirect, session, url_for, flash, send_from_directory
+
 from flask import render_template, request, redirect, url_for
+from .forms import AddPropertyForm
+from werkzeug.utils import secure_filename
+from app.model import Property
 
 
 ###
@@ -22,7 +28,53 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Wayne Clarke")
+
+
+@app.route('/properties/create',methods = ['POST','GET'])
+def addprop():
+    form = AddPropertyForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            property_title = form.property_title.data
+            no_of_rooms = form.no_of_rooms.data
+            no_of_bath = form.no_of_bath.data
+            location = form.location.data
+            price = form.price.data
+            property_type = form.property_type.data
+            desc = form.description.data
+            img = form.photo.data
+            imgName = secure_filename(img.filename)
+            img.save(os.path.join(app.config['UPLOAD_FOLDER'], imgName))
+            prop = Property(property_title = property_title,description =desc, no_of_rooms = no_of_rooms, no_of_bath = no_of_bath,
+             price = price, property_type = property_type, location = location, photo = imgName)
+            db.session.add(prop)
+            db.session.commit()
+
+            flash('Property has been Successfully added!!', 'success')
+
+            return redirect(url_for('properties'))
+        
+    return render_template('addprop.html',form = form)    
+
+
+@app.route('/properties')
+def properties():
+    prop = db.session.query(Property).all()
+    return render_template('properties.html',prop = prop)
+
+
+@app.route('/properties/<propertyid>')
+def propid(propertyid):
+    propertyid = Property.query.filter_by(property_id = int(propertyid)).first()
+    return render_template('property.html', prop = propertyid)
+
+
+@app.route('/uploads/<imgname>')
+def property_photo(imgname):
+    return send_from_directory(os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER']), imgname)
+
+
 
 
 ###

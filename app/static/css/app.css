@@ -1,3 +1,232 @@
 body {
     padding-top: 5rem;
 }
+
+.container{
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.card-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding-left: 5%;
+    padding-top: 5%;
+}
+
+
+.single{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    min-width: 100%;
+    max-height: 100%;
+}
+.card{
+    display: flex;
+    padding-left: 7%;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-bottom:1%;
+}
+.cards{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0% 1% 0% 1%;
+    padding-top: 1%;
+    flex-direction: column;   
+    width: 25%;  
+    box-shadow: 5px 10px 8px #888888;  
+}
+
+.cards > .card-info>*{
+    margin-bottom: 5%;
+}
+.main-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:none;
+    min-width: 60%;
+    min-height: 100%;
+    border-style: solid;
+    border-color: #888888;
+    border-width: 0.0125rem;
+    border-radius: 0.25rem;
+    box-shadow: 2.5px 5px 4px #888888;  
+}
+
+.pandr{
+    max-height: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+.pandr > *:first-child{
+    margin-right: 5%;
+}
+
+.left{
+    overflow: hidden;
+    display: flex;
+    min-width: 40%;
+    min-height: 100%;
+   
+    
+}
+.right{
+    min-width: 60%;
+    min-height: 100%;
+    padding-bottom: 5%;
+}
+.left > img{
+    
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+
+}
+
+.right{
+    display: flex;
+    justify-content: center;
+    
+    flex-direction: column;
+    padding-left: 5%;
+}
+
+
+
+
+button{
+    border-style: none;
+    max-width: 20%;
+    height: 50px;
+    border-radius: 0.25rem;
+    background-color: #15B8A7;
+    color:white;
+}
+
+.cards > img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    min-width: 100%;
+    min-height: 100%;
+}
+.mainimg{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+.mainimg>*{
+    height: 100%;
+    
+    object-fit: fill;
+    max-width: 100%;
+}
+
+.location{
+    display: flex;
+    flex-direction: row;
+}
+.pin{
+    max-height: 20px;
+    max-width:  20px;    
+}
+
+
+
+.price{
+    background-color: #5FA4FA;
+    color: white;
+    padding: 0% 10% 0% 10%;
+    border-radius: 25px;
+    width: fit-content;
+   
+}
+
+.type{
+    background-color: #FBBF23;
+    color: white;
+    padding: 0% 10% 0% 10%;
+    border-radius: 25px;
+   
+}
+.card-btn{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #15B8A7;
+    color: white;
+    min-width: 100%;
+    padding: 3%;
+}
+
+.property, .property:hover{
+    justify-self: center;
+    align-self: center;
+    text-decoration: none;
+    color: white;
+    min-width: 100%;
+    padding-left: 34%;
+}
+
+
+.top-data>.data{
+    display: flex;
+    flex-direction: column;
+    border-style: none;
+    max-width: 47%;
+    min-height: 20px;
+    margin-top: 20px;
+}
+.top-data{
+    
+    min-width: 100%
+}
+.bottom-data{
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.bottom-data > .data{
+    display: flex;
+    flex-direction: column;
+    padding-right: 6%;
+    padding-bottom: 5%;
+    max-width: 50%;
+    flex: 50%;
+}
+
+form > * {
+    margin-bottom: 2%;
+}
+form > .data{
+    display: flex;
+    flex-direction: column;
+    max-width: 22%;
+}
+
+input, select{
+    border-radius: 0.25rem;
+    box-shadow: none;
+    min-height: 40px;
+}
+
+#submit{
+    border-radius: 0.25rem;
+    border-style: none;
+    box-shadow: none;
+    min-height: 40px;
+    max-width:50%;
+    background-color: #0D6EFD;
+    color: white;
+}
